@@ -1,5 +1,7 @@
-# Commodities-Price-Prediction
+# [IN PROGRESS] Crude Oil Price Forecasting
 
 ## Objective
 
-Predict a commoditie price using other commodities as features and machineblearning models.
+Predict oil prices using other commodities data, web scraping, macro economic data and machine learning models.
+
+Participants: Adrien Bayre | Maxime Gruez | Martin Jondeau
