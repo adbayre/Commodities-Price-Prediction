@@ -1,8 +1,10 @@
 # Commodity Price Forecasting Using Machine Learning
 
-This project develops a machine learning framework to forecast **directional price movements** (Up / Down / Neutral) for **Brent Crude Oil futures** over a **5-day horizon**.  
+Adrien Bayre | Maxime Gruez | Martin Jondeau
+
+This project develops a machine learning framework to forecast directional price movements (Up / Down / Neutral) for Brent Crude Oil futures over a 5-day horizon.  
 It fuses traditional market data with alternative information sources and follows a complete, production-style research workflow.  
-The final ensemble model delivers **statistically significant predictive power** and a **Sharpe Ratio > 1.0** in backtesting.
+The final ensemble model delivers statistically significant predictive power and a Sharpe Ratio > 1.07 in backtesting.
 
 ---
 
