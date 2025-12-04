@@ -1,52 +1,61 @@
 # Commodity Price Forecasting Using Machine Learning
 
+This project develops a machine learning framework to forecast **directional price movements** (Up / Down / Neutral) for **Brent Crude Oil futures** over a **5-day horizon**.  
+It fuses traditional market data with alternative information sources and follows a complete, production-style research workflow.  
+The final ensemble model delivers **statistically significant predictive power** and a **Sharpe Ratio > 1.0** in backtesting.
+
+---
+
 ## Project Overview
 
-This project develops a machine learning framework to predict directional price movements (Up/Down/Neutral) for Brent Crude Oil futures over a 5-day horizon. By integrating traditional OHLCV data with alternative sources (Google Trends sentiment, Geopolitical Risk Index, Macroeconomic indicators), the system achieves statistically significant predictive power and positive alpha in backtesting.
-
-The project demonstrates a rigorous data science workflow, moving from a failed linear regression baseline ($R^2 < 0$) to a sophisticated Voting Ensemble (Random Forest + XGBoost + Logistic Regression) that generates a Sharpe Ratio > 1.0.
+Starting from a failed linear regression baseline (**R² < 0**), the pipeline evolves toward a **Voting Ensemble** combining Random Forest, XGBoost, and Logistic Regression.  
+This ensemble achieves robust out-of-sample performance and generates **positive, stable alpha**.
 
 ### Key Features
 
-Multi-Source Data Fusion: Merges 23 years of daily commodity prices with monthly Google Trends data (imputed via forward-fill) and daily Macroeconomic indicators (SOFR, CPI).
+- **Multi-Source Data Fusion**
+  - 23 years of daily OHLCV data  
+  - Google Trends sentiment (monthly → forward-filled to daily)  
+  - Geopolitical Risk Index (GPR)  
+  - Daily macroeconomic indicators (SOFR, CPI)
 
-Advanced Feature Engineering: Generates 400+ features including Moving Averages, RSI, MACD, and Volatility, followed by aggressive feature selection (Top 20) to combat the "Curse of Dimensionality."
+- **Advanced Feature Engineering**
+  - 400+ engineered features: Moving Averages, RSI, MACD, Rolling Volatility, etc.  
+  - Aggressive feature selection → **Top 20** predictors retained  
+  - Addresses the “Curse of Dimensionality”
 
-Quantile-Based Labeling: Defines target classes using dynamic 33% quantiles to ensure balanced training data and capture relative market moves.
+- **Quantile-Based Labeling**
+  - Uses dynamic 33% quantiles (Up / Neutral / Down)  
+  - Ensures balanced classes and captures relative market moves
 
-Walk-Forward Validation: Implements strict temporal splitting to prevent look-ahead bias, simulating real-world trading conditions.
+- **Walk-Forward Validation**
+  - Strict temporal splits  
+  - Eliminates look-ahead bias  
+  - Simulates real-world deployment constraints
 
-Ensemble Modeling: Combines the low-bias of XGBoost with the low-variance of Random Forest to create a stable, high-performance trading strategy.
+- **Ensemble Modeling**
+  - XGBoost: low bias  
+  - Random Forest: low variance  
+  - Logistic Regression: linear interpretability  
+  - Combined via a Voting Classifier for stability and accuracy
 
-### Technology Stack
+---
 
-Language: Python 3.9+
+## Technology Stack
 
-Data Processing: Pandas, NumPy
+- **Language:** Python 3.9+  
+- **Data Processing:** pandas, numpy  
+- **Visualization:** matplotlib, seaborn  
+- **Machine Learning:**  
+  - scikit-learn (Random Forest, Logistic Regression, Voting Classifier)  
+  - xgboost  
+  - tensorflow / keras (LSTM prototype)  
+- **Statistics:** SciPy (normality tests, skewness, kurtosis)
 
-Visualization: Matplotlib, Seaborn
+---
 
-### Machine Learning:
+## Installation
 
-scikit-learn (Random Forest, Logistic Regression, Voting Classifier)
-
-xgboost (Gradient Boosting)
-
-tensorflow / keras (LSTM Neural Network)
-
-Statistics: SciPy (Normality tests, Skew/Kurtosis)
-
-Installation & Usage
-
-Clone the repository:
-
-git clone [https://github.com/adbayre/commodity-price-prediction.git](https://github.com/adbayre/commodity-price-prediction.git)
+```bash
+git clone https://github.com/adbayre/commodity-price-prediction.git
 cd commodity-price-prediction
-
-### License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-### Authors
-
-Adrien Bayre | Martin Jondeau | Maxime Gruez - Financial Engineering Students (ESILV)
